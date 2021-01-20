@@ -16,7 +16,6 @@ var formSubmitHandler = function (event) {
 }
 
 
-
 var getUserRepos = function (user) {
     // format the github api URL
     var apiUrl = "https://api.github.com/users/" + user + "/repos";
@@ -43,7 +42,6 @@ var displayRepos = function (repos, searchTerm) {
         repoContainerEl.textContent = "No repositories found.";
         return;
     }
-
     //clear old content
     repoContainerEl.textContent = "";
     repoSearchTerm.textContent = searchTerm;
@@ -53,8 +51,9 @@ var displayRepos = function (repos, searchTerm) {
         var repoName = repos[i].owner.login + '/' + repos[i].name;
 
         // create a container for each repo
-        var repoEl = document.createElement('div');
+        var repoEl = document.createElement('a');
         repoEl.classList = "list-item flex-row justify-space-between align-center";
+        repoEl.setAttribute('href', "./single-repo.html?repo=" + repoName);
 
         // create a span element to hold repo name
         var titleEl = document.createElement('span');
@@ -80,6 +79,20 @@ var displayRepos = function (repos, searchTerm) {
         repoEl.appendChild(titleEl);
         repoEl.appendChild(statusEl);
         repoContainerEl.appendChild(repoEl);
+    }
+
+    var displayWarning = function(repo){
+        // add text to warning container
+        limitWarningEl.textContent = "To see more than 30 issues, visit ";
+        var linkEl = document.createElement('a');
+        linkEl.textContent = "see More Issues on GitHub.com";
+        linkEl.setAttribute('href','"https://github.com/" + repo + "/issues"');
+        linkEl.setAttribute("target", "_blank");
+
+        // append warning container
+        limitWarningEl.appendChild(linkEl)
+
+
     }
 
 };
