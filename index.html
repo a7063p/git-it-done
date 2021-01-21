@@ -11,6 +11,8 @@
   <title>Git it Done</title>
 </head>
 
+
+<!-- leftcolumn -->
 <body class="flex-column min-100-vh">
   <header class="hero">
     <h1 class="app-title"><i class="fab fa-github"></i> Git it Done!</h1>
@@ -27,8 +29,16 @@
           <button type="submit" class="btn">Get User</button>
         </form>
       </div>
+      <div class="card">
+        <h3 class="card-header text-uppercase">Search By Topic</h3>
+        <div class="card-body" id="language-buttons">
+          <button class="btn" data-language="javascript">JavaScript</button>
+          <button class="btn" data-language="html">HTML</button>
+          <button class="btn" data-language="css">CSS</button>
+        </div>
+      </div>
     </div>
-
+<!-- Right column -->
     <div class="col-12 col-md-8">
       <h2 class="subtitle">Showing Results for: <span id="repo-search-term"></span></h2>
       <div id="repos-container" class="list-group"></div>
